@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cute Guys Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<div id="admin-panel" style="display: none;">
+    <h2>⚙️ Panel de administrador</h2>
+
+    <button>🖼️ Cambiar portada TWINKS</button>
+    <button>🖼️ Cambiar portada PROHIBIDO</button>
+    <button>🖼️ Cambiar portada ADULTOS</button>
+</div>
+
+<script>
+    const ADMIN_ID = 8873809799;
+
+    const userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+
+    if (userId === ADMIN_ID) {
+        document.getElementById("admin-panel").style.display = "block";
+    } else {
+        document.getElementById("admin-panel").style.display = "none";
+    }
+</script>
+
+<body>
+
+    <div class="header">
+        <h1>🔥 Cute Guys Store</h1>
+        <p>Premium subscriptions</p>
+    </div>
+
+    <div class="card">
+        <h2>👑 TWINKS</h2>
+        <p>Desde $15 USD</p>
+    </div>
+
+    <div class="card">
+        <h2>🔒 PROHIBIDO</h2>
+        <p>Desde $15 USD</p>
+    </div>
+
+    <div class="card">
+        <h2>⭐ ADULTOS</h2>
+        <p>Desde $10 USD</p>
+    </div>
+
+    <nav class="bottom-menu">
+        <button>🛍️<br>Store</button>
+        <button>🛒<br>Cart</button>
+        <button>📊<br>Dashboard</button>
+        <button>📰<br>News</button>
+        <button>📞<br>Contact Us</button>
+    </nav>
+<div id="admin-panel" style="display: none;">
+    <h2>⚙️ Panel de administrador</h2>
+
+    <button>🖼️ Cambiar portada TWINKS</button>
+    <button>🖼️ Cambiar portada PROHIBIDO</button>
+    <button>🖼️ Cambiar portada ADULTOS</button>
+
+    <button>🎨 Cambiar colores</button>
+    <button>💰 Cambiar precios</button>
+</div>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<script>
+    const ADMIN_ID = 8873809799;
+
+    const userId = Telegram.WebApp.initDataUnsafe.user.id;
+
+    if (userId === ADMIN_ID) {
+        document.getElementById("admin-panel").style.display = "block";
+    }
+</script>
+
+</body>
+
+<div id="splash-screen">
+
+    <div class="logo-container">
+
+        <div class="crown">👑</div>
+
+        <div class="bag-container">
+            🛍️
+        </div>
+
+    </div>
+
+    <h1>CUTE GUYS STORE</h1>
+
+    <p class="subtitle">
+        ✨ Premium subscriptions at your fingertips
+    </p>
+
+    <div class="loader"></div>
+<div class="loading-container">
+
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+    </div>
+
+    <p class="loading-text">Loading...</p>
+
+</div>
+
+</div>
+
+<div id="app" style="display: none;">
+
+    <div class="header-store">
+
+        <h1>🔥 Cute Guys Store</h1>
+
+        <p>✨ Premium subscriptions at your fingertips</p>
+
+    </div>
+
+    <div class="subscription-card" onclick="openProduct('twinks')">
+
+        <img src="images/twinks.jpg">
+
+        <div class="overlay">
+
+            <h2>👑 TWINKS</h2>
+
+            <p>Desde $15 USD</p>
+
+        </div>
+
+    </div>
+
+    <div class="subscription-card" onclick="openProduct('prohibido')">
+
+        <img src="images/prohibido.jpg">
+
+        <div class="overlay">
+
+            <h2>🔒 PROHIBIDO</h2>
+
+            <p>Desde $15 USD</p>
+
+        </div>
+
+    </div>
+
+    <div class="subscription-card" onclick="openProduct('adultos')">
+
+        <img src="images/adultos.jpg">
+
+        <div class="overlay">
+
+            <h2>⭐ ADULTOS</h2>
+
+            <p>Desde $10 USD</p>
+
+        </div>
+
+    </div>
+
+    <nav class="bottom-menu">
+
+        <button>🛍️<br>Store</button>
+
+        <button>🛒<br>Cart</button>
+
+        <button>📊<br>Dashboard</button>
+
+        <button>📰<br>News</button>
+
+        <button>📞<br>Contact</button>
+
+    </nav>
+
+</div>
+
+</html>
