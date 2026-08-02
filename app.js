@@ -200,3 +200,86 @@ window.onload = () => {
     loadImages();
 
 };
+function openHome() {
+
+    document.getElementById("app").style.display = "block";
+
+    document.getElementById("admin-panel").style.display = "none";
+
+    document.getElementById("product-page").style.display = "none";
+
+}
+
+function openCart() {
+
+    alert("🛒 Tu carrito está vacío");
+
+}
+
+function openStats() {
+
+    alert("📊 Próximamente");
+
+}
+
+function openNews() {
+
+    alert("📰 Noticias disponibles");
+
+}
+
+function openContact() {
+
+    window.open("https://t.me/TuUsuario", "_blank");
+
+}
+function hideAllPages() {
+
+    document.getElementById("app").style.display = "none";
+    document.getElementById("product-page").style.display = "none";
+    document.getElementById("cart-page").style.display = "none";
+    document.getElementById("news-page").style.display = "none";
+    document.getElementById("contact-page").style.display = "none";
+    document.getElementById("admin-panel").style.display = "none";
+
+}
+
+function goHome() {
+
+    hideAllPages();
+
+    document.getElementById("app").style.display = "block";
+
+}
+
+function openCart() {
+
+    hideAllPages();
+
+    document.getElementById("cart-page").style.display = "block";
+
+}
+
+function openNews() {
+
+    hideAllPages();
+
+    document.getElementById("news-page").style.display = "block";
+
+}
+
+function openContact() {
+
+    hideAllPages();
+
+    document.getElementById("contact-page").style.display = "block";
+
+}
+
+function openAdmin() {
+
+    hideAllPages();
+
+    document.getElementById("admin-panel").style.display = "block";
+
+}

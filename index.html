@@ -85,13 +85,57 @@
 
 </div>
 
-<div id="product-page" style="display:none;">
+<!-- CARRITO -->
 
-    <button onclick="goBack()">⬅️ Volver</button>
+<div id="cart-page" style="display: none;">
 
-    <h1 id="product-title"></h1>
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
 
-    <div id="product-content"></div>
+    <h1>🛒 Carrito</h1>
+
+    <div class="plan-card">
+
+        <p>Tu carrito está vacío.</p>
+
+    </div>
+
+</div>
+
+<!-- NOTICIAS -->
+
+<div id="news-page" style="display: none;">
+
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
+
+    <h1>📰 Noticias</h1>
+
+    <div class="plan-card">
+
+        <p>🔥 Nuevas suscripciones disponibles.</p>
+
+    </div>
+
+</div>
+
+<!-- CONTACTO -->
+
+<div id="contact-page" style="display: none;">
+
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
+
+    <h1>📞 Contacto</h1>
+
+    <div class="plan-card">
+
+        <p>@TuUsuario</p>
+
+    </div>
 
 </div>
 
@@ -157,35 +201,83 @@
 
     <!-- Menú inferior -->
 
+<!-- CARRITO -->
+
+<div id="cart-page" style="display: none;">
+
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
+
+    <h1>🛒 Carrito</h1>
+
+    <div class="plan-card">
+
+        <p>Tu carrito está vacío.</p>
+
+    </div>
+
+</div>
+
+<!-- NOTICIAS -->
+
+<div id="news-page" style="display: none;">
+
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
+
+    <h1>📰 Noticias</h1>
+
+    <div class="plan-card">
+
+        <p>🔥 Nuevas suscripciones disponibles.</p>
+
+    </div>
+
+</div>
+
+<!-- CONTACTO -->
+
+<div id="contact-page" style="display: none;">
+
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
+    </button>
+
+    <h1>📞 Contacto</h1>
+
+    <div class="plan-card">
+
+        <p>@TuUsuario</p>
+
+    </div>
+
+</div>
+
 <nav class="bottom-menu">
 
-    <button onclick="location.reload()">
+    <button onclick="openHome()">
         🏠<br>Inicio
     </button>
 
-    <button onclick="alert('🛒 Carrito vacío')">
+    <button onclick="openCart()">
         🛒<br>Carrito
     </button>
 
-    <button onclick="alert('📊 Próximamente')">
+    <button onclick="openStats()">
         📊<br>Stats
     </button>
 
-    <button onclick="alert('📰 Noticias actualizadas')">
+    <button onclick="openNews()">
         📰<br>Noticias
     </button>
 
-    <button onclick="alert('📞 Contacto: @TuUsuario')">
+    <button onclick="openContact()">
         📞<br>Contacto
     </button>
 
-    <button id="admin-btn" style="display:none;">
-        👑<br>Admin
-    </button>
-
-    <button onclick="changeImage('TWINKS')">
-    🖼️ Cambiar TWINKS
-</button>
+    <button id="admin-btn" onclick="openAdmin()" style="display:none;">
 
 </nav>
 
