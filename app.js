@@ -27,20 +27,7 @@ window.onload = () => {
 
     // Mostrar la aplicación después de 2 segundos
 
-    setTimeout(() => {
-
-        const loading = document.getElementById("loading-screen");
-        const app = document.getElementById("app");
-
-        if (loading) {
-            loading.style.display = "none";
-        }
-
-        if (app) {
-            app.style.display = "block";
-        }
-
-    }, 2000);
+   
 
     // Botón admin
 
