@@ -17,12 +17,14 @@
 
 <body>
 
+    <!-- Pantalla de carga -->
+
     <div id="loading-screen">
 
         <h1 class="loading-title">CUTE GUYS STORE</h1>
 
         <p class="loading-subtitle">
-            Premium subscriptions at your fingertips
+            Suscripciones premium a tu alcance
         </p>
 
         <p id="loading-text">Conectando...</p>
@@ -33,6 +35,8 @@
 
     </div>
 
+    <!-- Noticias -->
+
     <div id="news-banner">
 
         <span id="news-text">
@@ -41,35 +45,41 @@
 
     </div>
 
-    <div id="admin-panel" style="display:none;">
+    <!-- Panel de administrador -->
 
-        <h2>⚙️ Panel de administrador</h2>
+    <div id="admin-panel" style="display: none;">
 
-        <button>🖼️ Cambiar portada TWINKS</button>
+        <h2>👑 Panel de administrador</h2>
 
-        <button>🖼️ Cambiar portada PROHIBIDO</button>
-
-        <button>🖼️ Cambiar portada ADULTOS</button>
-
-        <button>🎨 Cambiar colores</button>
+        <button>🖼️ Cambiar imágenes</button>
 
         <button>💰 Cambiar precios</button>
 
+        <button>📰 Editar noticias</button>
+
+        <button>🎨 Cambiar colores</button>
+
     </div>
 
-    <div id="app" style="display:none;">
+    <!-- Aplicación -->
+
+    <div id="app" style="display: none;">
 
         <div class="header">
 
-            <h1>🔥 Cute Guys Store</h1>
+            <h1>CUTE GUYS STORE</h1>
 
             <p>Suscripciones premium exclusivas</p>
 
+            <div class="header-line"></div>
+
         </div>
+
+        <!-- TWINKS -->
 
         <div class="subscription-card" onclick="openProduct('TWINKS')">
 
-            <img src="https://picsum.photos/600/300?1">
+            <img src="images/twinks.jpg">
 
             <div class="overlay">
 
@@ -81,9 +91,11 @@
 
         </div>
 
+        <!-- PROHIBIDO -->
+
         <div class="subscription-card" onclick="openProduct('PROHIBIDO')">
 
-          <img src="images/twinks.jpg">
+            <img src="images/prohibido.jpg">
 
             <div class="overlay">
 
@@ -95,9 +107,11 @@
 
         </div>
 
+        <!-- ADULTOS -->
+
         <div class="subscription-card" onclick="openProduct('ADULTOS')">
 
-            <img src="images/prohibido.jpg">
+            <img src="images/adultos.jpg">
 
             <div class="overlay">
 
@@ -109,69 +123,22 @@
 
         </div>
 
-    </div class="subscription-card" onclick="op>
-            <img src="images/adultos.jpg">
-            
-            <nav class="bottom-menu">
+    </div>
 
-    <button onclick="location.reload()">
-        🏠<br>Inicio
-    </button>
+    <!-- Menú inferior -->
 
-    <button onclick="alert('🛒 Carrito vacío')">
-        🛒<br>Carrito
-    </button>
+    <nav class="bottom-menu">
 
-    <button onclick="alert('📊 Próximamente')">
-        📊<br>Estadísticas
-    </button>
+        <button onclick="location.reload()">
+            🏠<br>Inicio
+        </button>
 
-    <button onclick="alert('📰 Noticias actualizadas')">
-        📰<br>Noticias
-    </button>
+        <button onclick="alert('🛒 Carrito vacío')">
+            🛒<br>Carrito
+        </button>
 
-    <button onclick="alert('📞 Contacto: @TuUsuario')">
-        📞<br>Contacto
-    </button>
+        <button onclick="alert('📊 Próximamente')">
+            📊<br>Stats
+        </button>
 
-    <button id="admin-btn" style="display: none;">
-        👑<br>Admin
-    </button>
-
-</nav>
-<script>
-
-const tg = window.Telegram.WebApp;
-
-if (
-    tg.initDataUnsafe.user &&
-    tg.initDataUnsafe.user.id === 8873809799
-) {
-    document.getElementById("admin-btn").style.display = "block";
-}
-
-</script>
-
-    <script>
-
-        const ADMIN_ID = 8873809799;
-
-        const tg = window.Telegram.WebApp;
-
-        if (
-            tg.initDataUnsafe &&
-            tg.initDataUnsafe.user &&
-            tg.initDataUnsafe.user.id === ADMIN_ID
-        ) {
-
-            document.getElementById("admin-panel").style.display = "block";
-
-        }
-
-    </script>
-
-    <script src="app.js"></script>
-
-</body>
-
-</html>
+        <button onclick="alert('📰 Noticias
