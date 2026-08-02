@@ -1,67 +1,44 @@
-const audio = new Audio("startup.mp3");
-
 window.onload = () => {
-  audio.volume = 0.4;
 
-  audio.play().catch(() => {});
+    const noticias = [
+        "🔥 Nuevas suscripciones disponibles",
+        "✨ Contenido actualizado diariamente",
+        "💎 Pagos con CryptoBot, Binance y PayPal",
+        "⭐ Promociones especiales"
+    ];
 
-  const loadingMessages = [
-    "🚀 Conectando con Cute Guys Store...",
-    "📰 Buscando novedades...",
-    "💎 Cargando suscripciones...",
-    "✨ Preparando tu experiencia..."
-  ];
+    let i = 0;
 
-  let i = 0;
+    setInterval(() => {
+        document.getElementById("news-text").textContent =
+            noticias[i % noticias.length];
 
-  const loadingInterval = setInterval(() => {
-    document.getElementById("loading-text").textContent =
-      loadingMessages[i % loadingMessages.length];
-
-    i++;
-  }, 1000);
-
-  setTimeout(() => {
-    clearInterval(loadingInterval);
-
-    document.getElementById("loading-screen").style.opacity = "0";
+        i++;
+    }, 3000);
 
     setTimeout(() => {
-      document.getElementById("loading-screen").style.display = "none";
-      document.getElementById("app").style.display = "block";
-    }, 500);
+        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    }, 4000);
 
-  }, 4000);
-
-  const news = [
-    "🔥 Nuevas suscripciones disponibles",
-    "✨ Contenido actualizado diariamente",
-    "💳 Pagos con CryptoBot, Binance y PayPal",
-    "⭐ Promociones especiales disponibles"
-  ];
-
-  let n = 0;
-
-  setInterval(() => {
-    document.getElementById("news-text").textContent =
-      news[n % news.length];
-
-    n++;
-  }, 3000);
 };
 
 function openProduct(product) {
 
-    if (product === "TWINKS") {
-        alert("👑 TWINKS\n\n30 días: $15\n60 días: $25\nPermanente: $40");
-    }
+    switch (product) {
 
-    if (product === "PROHIBIDO") {
-        alert("🔒 PROHIBIDO\n\n30 días: $15\n60 días: $25\nPermanente: $40");
-    }
+        case "TWINKS":
+            alert("👑 TWINKS\n\n30 días: $15\n60 días: $25\nPermanente: $40");
+            break;
 
-    if (product === "ADULTOS") {
-        alert("⭐ MAYORES\n\n30 días: $10\n60 días: $18\nPermanente: $30");
+        case "PROHIBIDO":
+            alert("🔒 PROHIBIDO\n\n30 días: $15\n60 días: $25\nPermanente: $40");
+            break;
+
+        case "ADULTOS":
+            alert("⭐ MAYORES\n\n30 días: $10\n60 días: $18\nPermanente: $30");
+            break;
+
     }
 
 }
