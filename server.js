@@ -19,12 +19,15 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
- app.get("/test-db", async (req, res) => {
+ 
 app.get("/hola", (req, res) => {
 
     res.send("FUNCIONA");
 
 });
+
+app.get("/test-db", async (req, res) => {
+
     try {
 
         const result = await pool.query(
