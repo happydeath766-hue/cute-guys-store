@@ -42,3 +42,19 @@ function openProduct(product) {
     }
 
 }
+const tg = window.Telegram.WebApp;
+
+tg.ready();
+
+const adminButton = document.getElementById("admin-btn");
+
+if (
+  tg.initDataUnsafe.user &&
+  tg.initDataUnsafe.user.id === 8873809799
+) {
+  adminButton.style.display = "block";
+}
+
+adminButton.addEventListener("click", () => {
+  alert("👑 Panel de administrador");
+});

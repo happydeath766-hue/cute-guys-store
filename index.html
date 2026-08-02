@@ -114,17 +114,43 @@
             
             <nav class="bottom-menu">
 
-        <button onclick="location.reload()">🏠<br>Store</button>
+    <button onclick="location.reload()">
+        🏠<br>Inicio
+    </button>
 
-<button onclick="alert('🛒 Carrito vacío')">🛒<br>Cart</button>
+    <button onclick="alert('🛒 Carrito vacío')">
+        🛒<br>Carrito
+    </button>
 
-<button onclick="alert('📊 Próximamente')">📊<br>Panel</button>
+    <button onclick="alert('📊 Próximamente')">
+        📊<br>Estadísticas
+    </button>
 
-<button onclick="alert('📰 Noticias actualizadas')">📰<br>News</button>
+    <button onclick="alert('📰 Noticias actualizadas')">
+        📰<br>Noticias
+    </button>
 
-<button onclick="alert('📞 Contacto: @TuUsuario')">📞<br>Contacto</button>
+    <button onclick="alert('📞 Contacto: @TuUsuario')">
+        📞<br>Contacto
+    </button>
 
-    </nav>
+    <button id="admin-btn" style="display: none;">
+        👑<br>Admin
+    </button>
+
+</nav>
+<script>
+
+const tg = window.Telegram.WebApp;
+
+if (
+    tg.initDataUnsafe.user &&
+    tg.initDataUnsafe.user.id === 8873809799
+) {
+    document.getElementById("admin-btn").style.display = "block";
+}
+
+</script>
 
     <script>
 
