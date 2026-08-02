@@ -214,6 +214,7 @@ function hideAllPages() {
     document.getElementById("cart-page").style.display = "none";
     document.getElementById("news-page").style.display = "none";
     document.getElementById("contact-page").style.display = "none";
+    document.getElementById("stats-page").style.display = "none";
     document.getElementById("admin-panel").style.display = "none";
 
 }
@@ -242,13 +243,15 @@ function openNews() {
 
 }
 
-function openContact() {
-
 function openStats() {
 
-    alert("Próximamente");
+    hideAllPages();
+
+    document.getElementById("stats-page").style.display = "block";
 
 }
+
+function openContact() {
 
     hideAllPages();
 

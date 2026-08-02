@@ -79,26 +79,22 @@
 
     <div id="catalogo" class="catalogo"></div>
 
-</div>
 
-        <!-- TWINKS -->
+    <div id="stats-page" style="display: none;">
 
-<div id="product-page" style="display: none;">
-
-    <button class="back-btn" onclick="goBack()">
-        Volver
+    <button class="back-btn" onclick="goHome()">
+        ⬅️ Volver
     </button>
 
-    <h1 id="product-title"></h1>
+    <h1>📊 Estadísticas</h1>
 
-    <video
-        id="product-video"
-        controls
-        width="100%"
-        style="border-radius: 16px; margin-top: 15px;"
-    ></video>
+    <div class="plan-card">
 
-    <div id="product-content"></div>
+        <p>Usuarios: 0</p>
+        <p>Ventas: 0</p>
+        <p>Suscripciones activas: 0</p>
+
+    </div>
 
 </div>
 
@@ -178,11 +174,13 @@
         📞<br>Contacto
     </button>
 
-    <button id="admin-btn" onclick="openAdmin()" style="display:none;">
-    👑<br>Admin
-</button>
+    <button id="admin-btn" onclick="openAdmin()">
+        👑<br>Admin
+    </button>
 
 </nav>
+
+</div>
 
 <script src="app.js"></script>
 
