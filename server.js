@@ -96,6 +96,23 @@ bot.start((ctx) => {
     ]
   ];
 
+  // Mostrar botón Admin solo para ti
+  if (ctx.from.id === 8873809799) {
+    botones[4].push(
+      Markup.button.callback(
+        "👑 Admin",
+        "admin"
+      )
+    );
+  }
+
+  ctx.reply(
+    "🛒 Bienvenido a Cute Guys Store\n\nSelecciona una opción:",
+    Markup.inlineKeyboard(botones)
+  );
+
+});
+
 bot.action("admin", (ctx) => {
 
   if (ctx.from.id !== 8873809799) {
@@ -103,24 +120,33 @@ bot.action("admin", (ctx) => {
   }
 
   ctx.reply(
-    "👑 Panel Administrador\n\nSelecciona una opción:",
+    "👑 Panel Administrador",
     Markup.inlineKeyboard([
       [
-        Markup.button.callback("💰 Cambiar precios", "precios")
+        Markup.button.callback(
+          "💰 Cambiar precios",
+          "precios"
+        )
       ],
       [
-        Markup.button.callback("🖼 Cambiar imágenes", "imagenes")
+        Markup.button.callback(
+          "🖼 Cambiar imágenes",
+          "imagenes"
+        )
       ],
       [
-        Markup.button.callback("📰 Editar noticias", "noticias")
-      ],
-      [
-        Markup.button.callback("➕ Agregar categoría", "agregar")
+        Markup.button.callback(
+          "📰 Editar noticias",
+          "noticias"
+        )
       ]
     ])
   );
 
 });
+
+  ctx.reply(
+    "👑 Panel Administrador\n\nSele
 
   // Botón solo para el administrador
   if (ctx.from.id === 8873809799) {
