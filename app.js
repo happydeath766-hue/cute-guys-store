@@ -4,6 +4,8 @@ window.onload = () => {
 
     tg.ready();
 
+loadImages();
+
     const noticias = [
         "🔥 Nuevas suscripciones disponibles",
         "✨ Contenido actualizado diariamente",
@@ -31,13 +33,19 @@ window.onload = () => {
 
     // Botón admin
 
+    const adminButton = document.getElementById("admin-btn");
+
+if (adminButton) {
+
     adminButton.addEventListener("click", () => {
 
-    document.getElementById("app").style.display = "none";
+        hideAllPages();
 
-    document.getElementById("admin-panel").style.display = "block";
+        document.getElementById("admin-panel").style.display = "block";
 
-});
+    });
+
+}
 
 
 function openProduct(product) {
@@ -195,11 +203,6 @@ function closeAdmin() {
 
 }
 
-window.onload = () => {
-
-    loadImages();
-
-};
 function openHome() {
 
     document.getElementById("app").style.display = "block";
@@ -282,4 +285,5 @@ function openAdmin() {
 
     document.getElementById("admin-panel").style.display = "block";
 
+}
 }
