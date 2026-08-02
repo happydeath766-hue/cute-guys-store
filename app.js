@@ -28,9 +28,7 @@ loadProducts();
 
     }, 3000);
 
-    // Mostrar la aplicación después de 2 segundos
 
-   
 
     // Botón admin
 
@@ -45,13 +43,6 @@ if (adminButton) {
         document.getElementById("admin-panel").style.display = "block";
 
     });
-
-}
-
-
-function openProduct(product) {
-
-    alert("Has abierto: " + product);
 
 }
 
