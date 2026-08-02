@@ -151,55 +151,26 @@
 
         <!-- TWINKS -->
 
-        <div class="subscription-card" onclick="openProduct('TWINKS')">
+       <div id="catalogo" class="catalogo"></div>
 
-            <img id="img-twinks" src="images/twinks.jpg">
+<div id="product-page" style="display: none;">
 
-            <div class="overlay">
+    <button class="back-btn" onclick="goBack()">
+        Volver
+    </button>
 
-                <h2>👑 TWINKS</h2>
+    <h1 id="product-title"></h1>
 
-                <p>Desde 15 USD</p>
+    <video
+        id="product-video"
+        controls
+        width="100%"
+        style="border-radius: 16px; margin-top: 15px;"
+    ></video>
 
-            </div>
+    <div id="product-content"></div>
 
-        </div>
-
-        <!-- PROHIBIDO -->
-
-        <div class="subscription-card" onclick="openProduct('PROHIBIDO')">
-
-            <img id="img-prohibido" src="images/prohibido.jpg">
-
-            <div class="overlay">
-
-                <h2>🔒 PROHIBIDO</h2>
-
-                <p>Desde 15 USD</p>
-
-            </div>
-
-        </div>
-
-        <!-- ADULTOS -->
-
-        <div class="subscription-card" onclick="openProduct('ADULTOS')">
-
-            <img id="img-adultos" src="images/adultos.jpg">
-
-            <div class="overlay">
-
-                <h2>⭐ ADULTOS</h2>
-
-                <p>Desde 10 USD</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Menú inferior -->
+</div>
 
 <!-- CARRITO -->
 

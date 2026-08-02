@@ -5,6 +5,7 @@ window.onload = () => {
     tg.ready();
 
 loadImages();
+loadProducts();
 
     const noticias = [
         "🔥 Nuevas suscripciones disponibles",
@@ -286,4 +287,32 @@ function openAdmin() {
     document.getElementById("admin-panel").style.display = "block";
 
 }
+}
+async function loadProducts() {
+
+    const respuesta = await fetch("/api/productos");
+
+    const productos = await respuesta.json();
+
+    const catalogo = document.getElementById("catalogo");
+
+    if (!catalogo) return;
+
+    catalogo.innerHTML = "";
+
+    productos.forEach((producto) => {
+
+        catalogo.innerHTML += `
+            <div class="card-netflix"
+                 onclick="openProduct('${producto.nombre}')">
+
+                <h2>${producto.nombre}</h2>
+
+                <p>Desde ${producto.precio_30} USD</p>
+
+            </div>
+        `;
+
+    });
+
 }
