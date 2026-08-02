@@ -105,8 +105,7 @@ bot.start((ctx) => {
     )
   ]);
 }
-  }
-
+  
   ctx.reply(
     "🛒 Bienvenido a Cute Guys Store\n\nSelecciona una opción:",
     Markup.inlineKeyboard(botones)
@@ -121,8 +120,6 @@ bot.action("contacto", (ctx) => {
   );
 
 });
-
-bot.action("admin", (ctx) => {
 
 bot.action("twinks", (ctx) => {
 
@@ -150,6 +147,7 @@ bot.action("adultos", (ctx) => {
 
 });
 
+bot.action("admin", (ctx) => {
   if (ctx.from.id !== 8873809799) {
     return ctx.answerCbQuery("❌ No autorizado");
   }
