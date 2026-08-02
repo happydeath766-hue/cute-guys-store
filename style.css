@@ -5,93 +5,27 @@
 }
 
 body {
-    background: linear-gradient(
-        180deg,
-        #080808 0%,
-        #12050a 50%,
-        #080808 100%
-    );
-    color: #ffffff;
+    background: #f3f5f7;
+    color: #111;
     font-family: Arial, sans-serif;
     padding: 15px;
     padding-bottom: 100px;
 }
 
-/* PANTALLA DE CARGA */
-
-#loading-screen {
-    position: fixed;
-    inset: 0;
-    background: #050505;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.loading-title {
-    font-size: 38px;
-    font-weight: bold;
-    color: #ff1f4d;
-    text-shadow: 0 0 25px rgba(255, 31, 77, 0.8);
-    margin-bottom: 10px;
-}
-
-.loading-subtitle {
-    color: #c5c5c5;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-#loading-text {
-    margin-bottom: 15px;
-    color: #999999;
-}
-
-.loader {
-    width: 280px;
-    height: 8px;
-    background: #1a1a1a;
-    border-radius: 999px;
-    overflow: hidden;
-}
-
-.bar {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        #ff0033,
-        #ff4d6d
-    );
-    animation: loading 4s linear forwards;
-}
-
-@keyframes loading {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
 /* NOTICIAS */
 
 #news-banner {
-    background: #151515;
-    border: 1px solid #2c2c2c;
-    border-radius: 16px;
+    background: #ffffff;
+    border-radius: 18px;
     padding: 14px;
     text-align: center;
     margin-bottom: 25px;
-    box-shadow: 0 0 20px rgba(255, 0, 60, 0.15);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 #news-text {
-    color: #ffffff;
+    color: #333;
     font-size: 14px;
 }
 
@@ -99,50 +33,44 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .header h1 {
-    font-size: 36px;
-    color: #ff1f4d;
-    font-weight: 900;
-    letter-spacing: 3px;
-    text-shadow: 0 0 25px rgba(255, 31, 77, 0.6);
+    font-size: 34px;
+    color: #111;
+    font-weight: bold;
 }
 
 .header p {
-    color: #bdbdbd;
-    margin-top: 10px;
+    color: #666;
+    margin-top: 8px;
 }
 
 .header-line {
-    width: 130px;
+    width: 120px;
     height: 4px;
-    margin: 15px auto 0;
+    margin: 15px auto;
     border-radius: 999px;
-    background: linear-gradient(
-        90deg,
-        #ff0033,
-        #ff4d6d
-    );
+    background: #111;
 }
+
 /* TARJETAS */
 
 .subscription-card {
     position: relative;
     width: 100%;
-    height: 230px;
-    margin-bottom: 25px;
+    height: 220px;
+    margin-bottom: 20px;
     border-radius: 24px;
     overflow: hidden;
-    border: 2px solid rgba(255, 0, 60, 0.25);
-    background: #111111;
-    box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
-    transition: transform 0.25s;
+    background: white;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
 }
 
 .subscription-card:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
 }
 
 .subscription-card img {
@@ -160,22 +88,22 @@ body {
     justify-content: flex-end;
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.85),
         rgba(0, 0, 0, 0.15)
     );
 }
 
 .overlay h2 {
-    font-size: 30px;
-    margin-bottom: 8px;
+    color: white;
+    font-size: 28px;
 }
 
 .overlay p {
-    color: #ffc0cb;
-    font-size: 16px;
+    color: #f1f1f1;
+    margin-top: 6px;
 }
 
-/* MENÚ INFERIOR */
+/* MENÚ */
 
 .bottom-menu {
     position: fixed;
@@ -183,74 +111,81 @@ body {
     right: 10px;
     bottom: 10px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #141414;
-    border: 1px solid #2c2c2c;
-    border-radius: 22px;
-    padding: 10px 5px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    gap: 8px;
+    padding: 10px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #dddddd;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .bottom-menu button {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 12px;
     flex: 1;
+    border: none;
+    background: #f4f4f4;
+    border-radius: 14px;
+    padding: 10px 4px;
+    color: #111;
+    font-size: 12px;
 }
 
 /* PANEL ADMIN */
 
 #admin-panel {
-    background: #141414;
-    border: 1px solid #2c2c2c;
+    background: white;
     border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 25px;
-    box-shadow: 0 0 20px rgba(255, 0, 60, 0.15);
+    padding: 20px;
+    border: 1px solid #dddddd;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
 }
 
 #admin-panel h2 {
-    margin-bottom: 15px;
-    color: #ff1f4d;
+    margin-bottom: 20px;
+}
+
+#admin-panel h3 {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+#admin-panel input {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #admin-panel button {
     width: 100%;
-    padding: 14px;
-    margin-top: 10px;
     border: none;
     border-radius: 14px;
-    background: #242424;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #111;
     color: white;
-    font-size: 15px;
 }
 
-/* PÁGINA DEL PRODUCTO */
+/* PRODUCTOS */
 
 #product-page {
     display: none;
-    padding: 20px;
+    padding: 10px;
 }
 
 .back-btn {
     width: 100%;
     border: none;
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 14px;
+    padding: 14px;
     margin-bottom: 20px;
-    font-size: 16px;
-    background: white;
-    color: black;
+    background: #111;
+    color: white;
 }
 
 .plan-card {
     background: white;
-    color: black;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 15px;
+    border: 1px solid #dddddd;
 }
 
 .buy-btn {
@@ -258,8 +193,7 @@ body {
     border: none;
     border-radius: 12px;
     padding: 12px;
-    margin-top: 10px;
-    background: #ff0033;
+    margin-top: 12px;
+    background: #111;
     color: white;
-    font-size: 16px;
 }
