@@ -207,29 +207,6 @@ function openHome() {
 
 }
 
-function openCart() {
-
-    alert("🛒 Tu carrito está vacío");
-
-}
-
-function openStats() {
-
-    alert("📊 Próximamente");
-
-}
-
-function openNews() {
-
-    alert("📰 Noticias disponibles");
-
-}
-
-function openContact() {
-
-    window.open("https://t.me/TuUsuario", "_blank");
-
-}
 function hideAllPages() {
 
     document.getElementById("app").style.display = "none";
@@ -266,6 +243,12 @@ function openNews() {
 }
 
 function openContact() {
+
+function openStats() {
+
+    alert("Próximamente");
+
+}
 
     hideAllPages();
 
