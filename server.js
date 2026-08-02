@@ -224,3 +224,38 @@ app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
   console.log("Bot iniciado");
 });
+.catalogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.card-netflix {
+    background: #181818;
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 18px;
+    min-height: 140px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-netflix:active {
+    transform: scale(0.96);
+}
+
+.card-netflix h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.card-netflix p {
+    color: #b3b3b3;
+}
+
+#product-page {
+    display: none;
+    padding: 20px;
+}
