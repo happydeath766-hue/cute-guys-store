@@ -36,13 +36,15 @@ loadProducts();
 
 if (adminButton) {
 
-    adminButton.addEventListener("click", () => {
+        adminButton.addEventListener("click", () => {
 
         hideAllPages();
 
         document.getElementById("admin-panel").style.display = "block";
 
     });
+
+}
 
 }
 
@@ -277,7 +279,6 @@ function openAdmin() {
 
     document.getElementById("admin-panel").style.display = "block";
 
-}
 }
 async function loadProducts() {
 
