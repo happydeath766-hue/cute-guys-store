@@ -51,5 +51,17 @@ window.onload = () => {
 };
 
 function openProduct(product) {
-  alert("Has abierto: " + product);
+
+    if (product === "TWINKS") {
+        alert("👑 TWINKS\n\n30 días: $15\n60 días: $25\nPermanente: $40");
+    }
+
+    if (product === "PROHIBIDO") {
+        alert("🔒 PROHIBIDO\n\n30 días: $15\n60 días: $25\nPermanente: $40");
+    }
+
+    if (product === "ADULTOS") {
+        alert("⭐ MAYORES\n\n30 días: $10\n60 días: $18\nPermanente: $30");
+    }
+
 }
