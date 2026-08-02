@@ -20,7 +20,11 @@ const pool = new Pool({
   }
 });
  app.get("/test-db", async (req, res) => {
+app.get("/hola", (req, res) => {
 
+    res.send("FUNCIONA");
+
+});
     try {
 
         const result = await pool.query(
