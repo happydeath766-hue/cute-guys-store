@@ -1,176 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cute Guys Store</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 </head>
-<div id="admin-panel" style="display: none;">
-    <h2>⚙️ Panel de administrador</h2>
-
-    <button>🖼️ Cambiar portada TWINKS</button>
-    <button>🖼️ Cambiar portada PROHIBIDO</button>
-    <button>🖼️ Cambiar portada ADULTOS</button>
-</div>
-
-<script>
-    const ADMIN_ID = 8873809799;
-
-    const userId = window.Telegram.WebApp.initDataUnsafe.user.id;
-
-    if (userId === ADMIN_ID) {
-        document.getElementById("admin-panel").style.display = "block";
-    } else {
-        document.getElementById("admin-panel").style.display = "none";
-    }
-</script>
 
 <body>
 
-<div id="loading-screen">
-  <h1>CUTE GUYS STORE</h1>
+    <div id="loading-screen">
 
-  <p id="loading-text">Conectando...</p>
+        <h1 class="loading-title">CUTE GUYS STORE</h1>
 
-  <div class="loader">
-    <div class="bar"></div>
-  </div>
-</div>
+        <p class="loading-subtitle">
+            Premium subscriptions at your fingertips
+        </p>
 
-<div id="news-banner">
-  <span id="news-text"></span>
-</div>
+        <p id="loading-text">Conectando...</p>
 
-    <div class="header">
-        <h1>🔥 Cute Guys Store</h1>
-        <p>Premium subscriptions</p>
-    </div>
-
-    <div class="card">
-        <h2>👑 TWINKS</h2>
-        <p>Desde $15 USD</p>
-    </div>
-
-    <div class="card">
-        <h2>🔒 PROHIBIDO</h2>
-        <p>Desde $15 USD</p>
-    </div>
-
-    <div class="card">
-        <h2>⭐ ADULTOS</h2>
-        <p>Desde $10 USD</p>
-    </div>
-
-    <nav class="bottom-menu">
-        <button>🛍️<br>Store</button>
-        <button>🛒<br>Cart</button>
-        <button>📊<br>Dashboard</button>
-        <button>📰<br>News</button>
-        <button>📞<br>Contact Us</button>
-    </nav>
-<div id="admin-panel" style="display: none;">
-    <h2>⚙️ Panel de administrador</h2>
-
-    <button>🖼️ Cambiar portada TWINKS</button>
-    <button>🖼️ Cambiar portada PROHIBIDO</button>
-    <button>🖼️ Cambiar portada ADULTOS</button>
-
-    <button>🎨 Cambiar colores</button>
-    <button>💰 Cambiar precios</button>
-</div>
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-<script>
-    const ADMIN_ID = 8873809799;
-
-    const userId = Telegram.WebApp.initDataUnsafe.user.id;
-
-    if (userId === ADMIN_ID) {
-        document.getElementById("admin-panel").style.display = "block";
-    }
-</script>
-
-</body>
-
-<div id="splash-screen">
-
-    <div class="logo-container">
-
-        <div class="crown">👑</div>
-
-        <div class="bag-container">
-            🛍️
+        <div class="loader">
+            <div class="bar"></div>
         </div>
 
     </div>
 
-    <h1>CUTE GUYS STORE</h1>
+    <div id="news-banner">
 
-    <p class="subtitle">
-        ✨ Premium subscriptions at your fingertips
-    </p>
-
-    <div class="loader"></div>
-<div class="loading-container">
-
-    <div class="loading-bar">
-        <div class="loading-progress"></div>
-    </div>
-
-    <p class="loading-text">Loading...</p>
-
-</div>
-
-</div>
-
-<div id="app" style="display: none;">
-
-    <div class="header-store">
-
-        <h1>🔥 Cute Guys Store</h1>
-
-        <p>✨ Premium subscriptions at your fingertips</p>
+        <span id="news-text">
+            🔥 Nuevas suscripciones disponibles
+        </span>
 
     </div>
 
-    <div class="subscription-card" onclick="openProduct('twinks')">
+    <div id="admin-panel" style="display:none;">
 
-        <img src="images/twinks.jpg">
+        <h2>⚙️ Panel de administrador</h2>
 
-        <div class="overlay">
+        <button>🖼️ Cambiar portada TWINKS</button>
 
-            <h2>👑 TWINKS</h2>
+        <button>🖼️ Cambiar portada PROHIBIDO</button>
 
-            <p>Desde $15 USD</p>
+        <button>🖼️ Cambiar portada ADULTOS</button>
+
+        <button>🎨 Cambiar colores</button>
+
+        <button>💰 Cambiar precios</button>
+
+    </div>
+
+    <div id="app" style="display:none;">
+
+        <div class="header">
+
+            <h1>🔥 Cute Guys Store</h1>
+
+            <p>Suscripciones premium exclusivas</p>
 
         </div>
 
-    </div>
+        <div class="subscription-card" onclick="openProduct('TWINKS')">
 
-    <div class="subscription-card" onclick="openProduct('prohibido')">
+            <img src="https://picsum.photos/600/300?1">
 
-        <img src="images/prohibido.jpg">
+            <div class="overlay">
 
-        <div class="overlay">
+                <h2>👑 TWINKS</h2>
 
-            <h2>🔒 PROHIBIDO</h2>
+                <p>Desde 15 USD</p>
 
-            <p>Desde $15 USD</p>
+            </div>
 
         </div>
 
-    </div>
+        <div class="subscription-card" onclick="openProduct('PROHIBIDO')">
 
-    <div class="subscription-card" onclick="openProduct('adultos')">
+            <img src="https://picsum.photos/600/300?2">
 
-        <img src="images/adultos.jpg">
+            <div class="overlay">
 
-        <div class="overlay">
+                <h2>🔒 PROHIBIDO</h2>
 
-            <h2>⭐ ADULTOS</h2>
+                <p>Desde 15 USD</p>
 
-            <p>Desde $10 USD</p>
+            </div>
+
+        </div>
+
+        <div class="subscription-card" onclick="openProduct('ADULTOS')">
+
+            <img src="https://picsum.photos/600/300?3">
+
+            <div class="overlay">
+
+                <h2>⭐ ADULTOS</h2>
+
+                <p>Desde 10 USD</p>
+
+            </div>
 
         </div>
 
@@ -178,7 +113,7 @@
 
     <nav class="bottom-menu">
 
-        <button>🛍️<br>Store</button>
+        <button>🏠<br>Store</button>
 
         <button>🛒<br>Cart</button>
 
@@ -190,6 +125,26 @@
 
     </nav>
 
-</div>
+    <script>
+
+        const ADMIN_ID = 8873809799;
+
+        const tg = window.Telegram.WebApp;
+
+        if (
+            tg.initDataUnsafe &&
+            tg.initDataUnsafe.user &&
+            tg.initDataUnsafe.user.id === ADMIN_ID
+        ) {
+
+            document.getElementById("admin-panel").style.display = "block";
+
+        }
+
+    </script>
+
+    <script src="app.js"></script>
+
+</body>
 
 </html>
