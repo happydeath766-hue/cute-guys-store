@@ -98,12 +98,13 @@ bot.start((ctx) => {
 
   // Mostrar botón Admin solo para tu cuenta
   if (ctx.from.id === 8873809799) {
-    botones[4].push(
-      Markup.button.callback(
-        "👑 Admin",
-        "admin"
-      )
-    );
+  botones.push([
+    Markup.button.callback(
+      "👑 Admin",
+      "admin"
+    )
+  ]);
+}
   }
 
   ctx.reply(
@@ -122,6 +123,32 @@ bot.action("contacto", (ctx) => {
 });
 
 bot.action("admin", (ctx) => {
+
+bot.action("twinks", (ctx) => {
+
+  ctx.reply(
+    "👑 TWINKS\n\n📅 30 días: $15 USD\n📅 60 días: $25 USD\n♾ Permanente: $40 USD"
+  );
+
+});
+
+
+bot.action("prohibido", (ctx) => {
+
+  ctx.reply(
+    "🔒 PROHIBIDO\n\n📅 30 días: $15 USD\n📅 60 días: $25 USD\n♾ Permanente: $40 USD"
+  );
+
+});
+
+
+bot.action("adultos", (ctx) => {
+
+  ctx.reply(
+    "⭐ ADULTOS\n\n📅 30 días: $10 USD\n📅 60 días: $18 USD\n♾ Permanente: $30 USD"
+  );
+
+});
 
   if (ctx.from.id !== 8873809799) {
     return ctx.answerCbQuery("❌ No autorizado");
