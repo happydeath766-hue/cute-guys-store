@@ -49,21 +49,65 @@
 
     <div id="admin-panel" style="display: none;">
 
-        <h2>👑 Panel de administrador</h2>
+    <h2>👑 Panel de administrador</h2>
 
-        <button>🖼️ Cambiar imágenes</button>
+    <h3>👑 TWINKS</h3>
 
-        <button>💰 Cambiar precios</button>
+    <input type="file" id="twinks-input" accept="image/*">
 
-        <button>📰 Editar noticias</button>
+    <button onclick="changeImage('twinks')">
+        Guardar imagen
+    </button>
 
-        <button>🎨 Cambiar colores</button>
+    <h3>🔒 PROHIBIDO</h3>
 
-    </div>
+    <input type="file" id="prohibido-input" accept="image/*">
+
+    <button onclick="changeImage('prohibido')">
+        Guardar imagen
+    </button>
+
+    <h3>⭐ ADULTOS</h3>
+
+    <input type="file" id="adultos-input" accept="image/*">
+
+    <button onclick="changeImage('adultos')">
+        Guardar imagen
+    </button>
+
+    <button onclick="closeAdmin()">
+        ⬅️ Volver
+    </button>
+
+</div>
 
     <!-- Aplicación -->
 
     <div id="app" style="display: none;">
+
+<!-- Página del producto -->
+
+<div id="product-page" style="display: none;">
+
+    <button class="back-btn" onclick="goBack()">
+        ⬅️ Volver
+    </button>
+
+    <h1 id="product-title"></h1>
+
+    <div id="product-content"></div>
+
+</div>
+
+<div id="product-page" style="display:none;">
+
+    <button onclick="goBack()">⬅️ Volver</button>
+
+    <h1 id="product-title"></h1>
+
+    <div id="product-content"></div>
+
+</div>
 
         <div class="header">
 
@@ -79,7 +123,7 @@
 
         <div class="subscription-card" onclick="openProduct('TWINKS')">
 
-            <img src="images/twinks.jpg">
+            <img id="img-twinks" src="images/twinks.jpg">
 
             <div class="overlay">
 
@@ -95,7 +139,7 @@
 
         <div class="subscription-card" onclick="openProduct('PROHIBIDO')">
 
-            <img src="images/prohibido.jpg">
+            <img id="img-prohibido" src="images/prohibido.jpg">
 
             <div class="overlay">
 
@@ -111,7 +155,7 @@
 
         <div class="subscription-card" onclick="openProduct('ADULTOS')">
 
-            <img src="images/adultos.jpg">
+            <img id="img-adultos" src="images/adultos.jpg">
 
             <div class="overlay">
 
@@ -152,6 +196,10 @@
     <button id="admin-btn" style="display:none;">
         👑<br>Admin
     </button>
+
+    <button onclick="changeImage('TWINKS')">
+    🖼️ Cambiar TWINKS
+</button>
 
 </nav>
 
