@@ -15,11 +15,11 @@ const PORT = process.env.PORT || 3000;
 // BASE DE DATOS POSTGRESQL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  ssl: process.env.DATABASE_URL.includes("rlwy.net")
+    ? { rejectUnauthorized: false }
+    : false
 });
- 
+
 app.get("/hola", (req, res) => {
 
     res.send("FUNCIONA");
