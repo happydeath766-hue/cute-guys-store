@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname)));
 const PORT = process.env.PORT || 3000;
 
 // BOT DE TELEGRAM
-const bot = new Telegraf(process.env.8841251655:AAEeOURbahi2HyClvyBycXwPNO_JxFLIIPY);
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start((ctx) => {
   ctx.reply(
