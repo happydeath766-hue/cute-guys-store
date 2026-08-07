@@ -168,7 +168,7 @@ async function loadProducts() {
 
         const productos = await respuesta.json();
 
-        console.log("PRODUCTOS:", productos);
+        alert("PRODUCTOS RECIBIDOS: " + JSON.stringify(productos));
 
         catalogo.innerHTML = "";
 
