@@ -300,7 +300,8 @@ async function loadProducts() {
 
         `;
 
-    });
+});
 
 }
 
+};
