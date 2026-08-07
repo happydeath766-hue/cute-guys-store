@@ -1,10 +1,11 @@
 window.onload = () => {
 
-    const tg = window.Telegram.WebApp;
+    const tg = window.Telegram?.WebApp;
 
-    tg.ready();
-
-    loadProducts();
+    if (tg) {
+        tg.ready();
+        tg.expand();
+    }
 
     const noticias = [
         "🔥 Nuevas suscripciones disponibles",
@@ -16,7 +17,6 @@ window.onload = () => {
     let i = 0;
 
     setInterval(() => {
-
         const texto = document.getElementById("news-text");
 
         if (texto) {
@@ -24,14 +24,26 @@ window.onload = () => {
         }
 
         i++;
-
     }, 3000);
 
+    loadProducts();
+    loadSavedImages();
+
+    const adminButton = document.getElementById("admin-btn");
+
+    if (adminButton) {
+        adminButton.addEventListener("click", openAdmin);
+    }
 };
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
 
 function hideAllPages() {
 
-    const paginas = [
+    const ids = [
         "app",
         "product-page",
         "cart-page",
@@ -41,72 +53,198 @@ function hideAllPages() {
         "admin-panel"
     ];
 
-    paginas.forEach(id => {
-
+    ids.forEach(id => {
         const elemento = document.getElementById(id);
 
         if (elemento) {
             elemento.style.display = "none";
         }
-
     });
-
 }
+
 
 function openHome() {
 
     hideAllPages();
 
-    document.getElementById("app").style.display = "block";
+    const app = document.getElementById("app");
 
+    if (app) {
+        app.style.display = "block";
+    }
 }
+
 
 function goHome() {
-
     openHome();
-
 }
+
 
 function openCart() {
 
     hideAllPages();
 
-    document.getElementById("cart-page").style.display = "block";
+    const pagina = document.getElementById("cart-page");
 
+    if (pagina) {
+        pagina.style.display = "block";
+    }
 }
+
 
 function openNews() {
 
     hideAllPages();
 
-    document.getElementById("news-page").style.display = "block";
+    const pagina = document.getElementById("news-page");
 
+    if (pagina) {
+        pagina.style.display = "block";
+    }
 }
+
 
 function openStats() {
 
     hideAllPages();
 
-    document.getElementById("stats-page").style.display = "block";
+    const pagina = document.getElementById("stats-page");
 
+    if (pagina) {
+        pagina.style.display = "block";
+    }
 }
+
 
 function openContact() {
 
     hideAllPages();
 
-    document.getElementById("contact-page").style.display = "block";
+    const pagina = document.getElementById("contact-page");
 
+    if (pagina) {
+        pagina.style.display = "block";
+    }
 }
+
 
 function openAdmin() {
 
     hideAllPages();
 
-    document.getElementById("admin-panel").style.display = "block";
+    const panel = document.getElementById("admin-panel");
 
+    if (panel) {
+        panel.style.display = "block";
+    }
 }
-function openProduct(product) {
+
+
+function closeAdmin() {
+    openHome();
+}
+
+
+/* =========================
+   PRODUCTOS
+========================= */
+
+async function loadProducts() {
+
+    const catalogo = document.getElementById("catalogo");
+
+    if (!catalogo) {
+        return;
+    }
+
+    try {
+
+        const respuesta = await fetch("/api/productos");
+
+        if (!respuesta.ok) {
+            throw new Error("HTTP " + respuesta.status);
+        }
+
+        const productos = await respuesta.json();
+
+        catalogo.innerHTML = "";
+
+        if (!Array.isArray(productos) || productos.length === 0) {
+
+            catalogo.innerHTML = `
+                <div class="plan-card">
+                    <h2>No hay productos</h2>
+                    <p>No se encontraron productos en la base de datos.</p>
+                </div>
+            `;
+
+            return;
+        }
+
+        productos.forEach(producto => {
+
+            const nombre = producto.nombre || "";
+
+            const grupo = nombre === "MAYORES"
+                ? "adultos"
+                : nombre.toLowerCase();
+
+            const imagenGuardada =
+                localStorage.getItem("img-" + grupo);
+
+            const imagen = imagenGuardada
+                ? imagenGuardada
+                : "images/" + (
+                    producto.imagen || (grupo + ".jpg")
+                  );
+
+            catalogo.innerHTML += `
+
+                <div
+                    class="card-netflix"
+                    style="
+                        background-image:url('${imagen}');
+                        background-size:cover;
+                        background-position:center;
+                    "
+                    onclick="openProduct('${nombre}')"
+                >
+
+                    <div class="card-overlay">
+
+                        <h2>${nombre}</h2>
+
+                        <span>
+                            Desde ${producto.precio_30} USD
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+        });
+
+    } catch (error) {
+
+        console.error("Error cargando productos:", error);
+
+        catalogo.innerHTML = `
+            <div class="plan-card">
+                <h2>⚠️ Error</h2>
+                <p>No se pudieron cargar los productos.</p>
+                <small>${error.message}</small>
+            </div>
+        `;
+    }
+}
+
+
+/* =========================
+   PRODUCTO
+========================= */
+
+async function openProduct(product) {
 
     hideAllPages();
 
@@ -119,107 +257,215 @@ function openProduct(product) {
 
     pagina.style.display = "block";
 
-    document.getElementById("product-title").innerText = product;
+    const titulo = document.getElementById("product-title");
+    const contenido = document.getElementById("product-content");
 
-    let html = "";
-
-    if (product === "TWINKS") {
-
-        html = `
-        <div class="plan-card">
-            <h2>30 días</h2>
-            <p>15 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>25 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>Permanente</h2>
-            <p>40 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-        `;
+    if (titulo) {
+        titulo.innerText = product;
     }
 
-    if (product === "PROHIBIDO") {
-
-        html = `
-        <div class="plan-card">
-            <h2>30 días</h2>
-            <p>15 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>25 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>Permanente</h2>
-            <p>40 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-        `;
+    if (!contenido) {
+        return;
     }
 
-    if (product === "ADULTOS") {
-
-        html = `
+    contenido.innerHTML = `
         <div class="plan-card">
-            <h2>30 días</h2>
-            <p>10 USD</p>
-            <button class="buy-btn">Comprar</button>
+            <p>Cargando planes...</p>
         </div>
+    `;
 
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>18 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
+    try {
+
+        const respuesta = await fetch("/api/productos");
+
+        const productos = await respuesta.json();
+
+        const encontrado = productos.find(
+            p => p.nombre === product
+        );
+
+        if (!encontrado) {
+            contenido.innerHTML = `
+                <div class="plan-card">
+                    <p>Producto no encontrado.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = "";
+
+        if (encontrado.precio_30) {
+
+            html += `
+                <div class="plan-card">
+                    <h2>30 días</h2>
+                    <p>${encontrado.precio_30} USD</p>
+                    <button
+                        class="buy-btn"
+                        onclick="buyProduct('${product}', '30 días', '${encontrado.precio_30}')"
+                    >
+                        Comprar
+                    </button>
+                </div>
+            `;
+        }
+
+        if (encontrado.precio_60) {
+
+            html += `
+                <div class="plan-card">
+                    <h2>60 días</h2>
+                    <p>${encontrado.precio_60} USD</p>
+                    <button
+                        class="buy-btn"
+                        onclick="buyProduct('${product}', '60 días', '${encontrado.precio_60}')"
+                    >
+                        Comprar
+                    </button>
+                </div>
+            `;
+        }
+
+        if (encontrado.precio_perm) {
+
+            html += `
+                <div class="plan-card">
+                    <h2>Permanente</h2>
+                    <p>${encontrado.precio_perm} USD</p>
+                    <button
+                        class="buy-btn"
+                        onclick="buyProduct('${product}', 'Permanente', '${encontrado.precio_perm}')"
+                    >
+                        Comprar
+                    </button>
+                </div>
+            `;
+        }
+
+        contenido.innerHTML = html;
+
+    } catch (error) {
+
+        console.error(error);
+
+        contenido.innerHTML = `
+            <div class="plan-card">
+                <h2>⚠️ Error</h2>
+                <p>${error.message}</p>
+            </div>
         `;
     }
-
-    document.getElementById("product-content").innerHTML = html;
-
 }
 
-async function loadProducts() {
 
-    const respuesta = await fetch("/api/productos");
+/* =========================
+   COMPRA
+========================= */
 
-    const productos = await respuesta.json();
+function buyProduct(producto, plan, precio) {
 
-    const catalogo = document.getElementById("catalogo");
+    alert(
+        "Producto: " +
+        producto +
+        "\nPlan: " +
+        plan +
+        "\nPrecio: " +
+        precio +
+        " USD"
+    );
+}
 
-    if (!catalogo) return;
 
-    catalogo.innerHTML = "";
+/* =========================
+   IMÁGENES ADMIN
+========================= */
 
-    productos.forEach((producto) => {
+function changeImage(group) {
 
-        catalogo.innerHTML += `
-        <div class="card-netflix"
-             style="background-image: url('images/${producto.nombre.toLowerCase()}.jpg');"
-             onclick="openProduct('${producto.nombre}')">
+    const input = document.getElementById(
+        group + "-input"
+    );
 
-            <div class="card-overlay">
+    if (!input) {
+        alert("No existe el selector de imagen.");
+        return;
+    }
 
-                <h2>${producto.nombre}</h2>
+    if (!input.files || !input.files.length) {
+        alert("Selecciona una imagen primero.");
+        return;
+    }
 
-                <span>Desde ${producto.precio_30} USD</span>
+    const file = input.files[0];
 
-            </div>
+    if (!file.type.startsWith("image/")) {
+        alert("El archivo debe ser una imagen.");
+        return;
+    }
 
-        </div>
-        `;
+    const reader = new FileReader();
 
+    reader.onload = function(event) {
+
+        try {
+
+            localStorage.setItem(
+                "img-" + group,
+                event.target.result
+            );
+
+            alert("✅ Imagen guardada correctamente.");
+
+            loadProducts();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "❌ No se pudo guardar la imagen.\n" +
+                error.message
+            );
+        }
+    };
+
+    reader.onerror = function() {
+        alert("❌ No se pudo leer la imagen.");
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+function loadSavedImages() {
+
+    const grupos = [
+        "twinks",
+        "prohibido",
+        "adultos"
+    ];
+
+    grupos.forEach(group => {
+
+        const imagen = localStorage.getItem(
+            "img-" + group
+        );
+
+        if (imagen) {
+            console.log(
+                "Imagen guardada:",
+                group
+            );
+        }
     });
+}
 
+
+/* =========================
+   BOTÓN VOLVER
+========================= */
+
+function goBack() {
+    openHome();
 }
