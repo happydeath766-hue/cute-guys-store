@@ -15,8 +15,10 @@ window.onerror = function (mensaje, archivo, linea) {
 
     tg.ready();
 
-loadImages();
-loadProducts();
+setTimeout(() => {
+    loadImages();
+    loadProducts();
+}, 100);
 
     const noticias = [
         "🔥 Nuevas suscripciones disponibles",
@@ -219,8 +221,6 @@ function openHome() {
 }
 
 function hideAllPages() {
-
-    function hideAllPages() {
 
     document.getElementById("product-page").style.display = "none";
     document.getElementById("cart-page").style.display = "none";
