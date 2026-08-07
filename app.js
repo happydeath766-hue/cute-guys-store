@@ -1,24 +1,10 @@
 window.onload = () => {
 
-window.onerror = function (mensaje, archivo, linea) {
-    alert(
-        "ERROR:\n" +
-        mensaje +
-        "\nArchivo: " +
-        archivo +
-        "\nLínea: " +
-        linea
-    );
-};
-
     const tg = window.Telegram.WebApp;
 
     tg.ready();
 
-setTimeout(() => {
-    loadImages();
     loadProducts();
-}, 100);
 
     const noticias = [
         "🔥 Nuevas suscripciones disponibles",
@@ -41,207 +27,43 @@ setTimeout(() => {
 
     }, 3000);
 
+};
 
+function hideAllPages() {
 
-    // Botón admin
+    const paginas = [
+        "app",
+        "product-page",
+        "cart-page",
+        "news-page",
+        "contact-page",
+        "stats-page",
+        "admin-panel"
+    ];
 
-    const adminButton = document.getElementById("admin-btn");
+    paginas.forEach(id => {
 
-if (adminButton) {
+        const elemento = document.getElementById(id);
 
-        adminButton.addEventListener("click", () => {
-
-        hideAllPages();
-
-        document.getElementById("admin-panel").style.display = "block";
+        if (elemento) {
+            elemento.style.display = "none";
+        }
 
     });
 
 }
 
-}
-
-function openProduct(product) {
-
-alert("Abriendo: " + product);
-
-    hideAllPages();
-
-
-    hideAllPages();
-
-    document.getElementById("product-page").style.display = "block";
-
-    document.getElementById("product-title").innerText = product;
-
-    let html = "";
-
-    if (product === "TWINKS") {
-
-        html = `
-        <div class="plan-card">
-            <h2>30 días</h2>
-            <p>15 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>25 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>Permanente</h2>
-            <p>40 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-        `;
-    }
-
-    if (product === "PROHIBIDO") {
-
-        html = `
-        <div class="plan-card">
-            <h2>30 días</h2>
-            <p>15 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>25 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-        `;
-    }
-
-    if (product === "ADULTOS") {
-
-        html = `
-        <div class="plan-card">
-            <h2>30 días</h2>
-            <p>10 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-
-        <div class="plan-card">
-            <h2>60 días</h2>
-            <p>18 USD</p>
-            <button class="buy-btn">Comprar</button>
-        </div>
-        `;
-    }
-
-    document.getElementById("product-content").innerHTML = html;
-
-}
-
-function goBack() {
-
-    document.getElementById("product-page").style.display = "none";
-
-    document.getElementById("app").style.display = "block";
-
-}
-
-function changeImage(group) {
-
-    const input = document.getElementById(group + "-input");
-
-    const file = input.files[0];
-
-    if (!file) {
-
-        alert("Selecciona una imagen");
-
-        return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-
-        document.getElementById(
-            "img-" + group
-        ).src = e.target.result;
-
-        localStorage.setItem(
-            "img-" + group,
-            e.target.result
-        );
-
-        alert("Imagen actualizada");
-
-    };
-
-    reader.readAsDataURL(file);
-
-}
-
-function loadImages() {
-
-    ["twinks", "prohibido", "adultos"].forEach(
-
-        (group) => {
-
-            const saved = localStorage.getItem(
-                "img-" + group
-            );
-
-            if (saved) {
-
-                document.getElementById(
-                    "img-" + group
-                ).src = saved;
-
-            }
-
-        }
-
-    );
-
-}
-
-function closeAdmin() {
-
-    document.getElementById(
-        "admin-panel"
-    ).style.display = "none";
-
-    document.getElementById(
-        "app"
-    ).style.display = "block";
-
-}
-
 function openHome() {
 
+    hideAllPages();
+
     document.getElementById("app").style.display = "block";
-
-    document.getElementById("admin-panel").style.display = "none";
-
-    document.getElementById("product-page").style.display = "none";
-
-}
-
-function hideAllPages() {
-
-    document.getElementById("app").style.display = "none";
-    document.getElementById("product-page").style.display = "none";
-    document.getElementById("cart-page").style.display = "none";
-    document.getElementById("news-page").style.display = "none";
-    document.getElementById("contact-page").style.display = "none";
-    document.getElementById("stats-page").style.display = "none";
-    document.getElementById("admin-panel").style.display = "none";
 
 }
 
 function goHome() {
 
-    hideAllPages();
-
-    document.getElementById("app").style.display = "block";
+    openHome();
 
 }
 
@@ -284,7 +106,89 @@ function openAdmin() {
     document.getElementById("admin-panel").style.display = "block";
 
 }
+function openProduct(product) {
 
+    hideAllPages();
+
+    const pagina = document.getElementById("product-page");
+
+    if (!pagina) {
+        alert("No existe product-page");
+        return;
+    }
+
+    pagina.style.display = "block";
+
+    document.getElementById("product-title").innerText = product;
+
+    let html = "";
+
+    if (product === "TWINKS") {
+
+        html = `
+        <div class="plan-card">
+            <h2>30 días</h2>
+            <p>15 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+
+        <div class="plan-card">
+            <h2>60 días</h2>
+            <p>25 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+
+        <div class="plan-card">
+            <h2>Permanente</h2>
+            <p>40 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+        `;
+    }
+
+    if (product === "PROHIBIDO") {
+
+        html = `
+        <div class="plan-card">
+            <h2>30 días</h2>
+            <p>15 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+
+        <div class="plan-card">
+            <h2>60 días</h2>
+            <p>25 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+
+        <div class="plan-card">
+            <h2>Permanente</h2>
+            <p>40 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+        `;
+    }
+
+    if (product === "ADULTOS") {
+
+        html = `
+        <div class="plan-card">
+            <h2>30 días</h2>
+            <p>10 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+
+        <div class="plan-card">
+            <h2>60 días</h2>
+            <p>18 USD</p>
+            <button class="buy-btn">Comprar</button>
+        </div>
+        `;
+    }
+
+    document.getElementById("product-content").innerHTML = html;
+
+}
 
 async function loadProducts() {
 
@@ -301,23 +205,21 @@ async function loadProducts() {
     productos.forEach((producto) => {
 
         catalogo.innerHTML += `
-    <div class="card-netflix"
-         style="background-image: url('images/${producto.nombre.toLowerCase()}.jpg');"
-         onclick="openProduct('${producto.nombre}')">
+        <div class="card-netflix"
+             style="background-image: url('images/${producto.nombre.toLowerCase()}.jpg');"
+             onclick="openProduct('${producto.nombre}')">
 
-        <div class="card-overlay">
+            <div class="card-overlay">
 
-            <h2>${producto.nombre}</h2>
+                <h2>${producto.nombre}</h2>
 
-            <span>Desde ${producto.precio_30} USD</span>
+                <span>Desde ${producto.precio_30} USD</span>
+
+            </div>
 
         </div>
-
-    </div>
-
         `;
 
     });
 
 }
-
