@@ -63,7 +63,12 @@ if (adminButton) {
 
 function openProduct(product) {
 
-    // document.getElementById("app").style.display = "none";
+alert("Abriendo: " + product);
+
+    hideAllPages();
+
+
+    hideAllPages();
 
     document.getElementById("product-page").style.display = "block";
 
