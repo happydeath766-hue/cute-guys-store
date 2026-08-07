@@ -66,6 +66,38 @@ app.get("/api/productos", async (req, res) => {
 });
 
 
+
+// ACTUALIZAR IMAGEN DE PRODUCTO
+app.put("/api/productos/:id/imagen", async (req, res) => {
+  try {
+    const { imagen } = req.body;
+    const { id } = req.params;
+
+    if (!imagen || typeof imagen !== "string") {
+      return res.status(400).json({
+        error: "Imagen no válida"
+      });
+    }
+
+    await pool.query(
+      "UPDATE productos SET imagen = $1 WHERE id = $2",
+      [imagen, id]
+    );
+
+    res.json({
+      ok: true,
+      mensaje: "Imagen guardada permanentemente"
+    });
+
+  } catch (error) {
+    console.error("Error guardando imagen:", error);
+
+    res.status(500).json({
+      error: error.message
+    });
+  }
+});
+
 // API NOTICIAS
 app.get("/api/noticias", async (req, res) => {
   try {
