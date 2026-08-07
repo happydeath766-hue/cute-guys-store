@@ -222,6 +222,7 @@ function openHome() {
 
 function hideAllPages() {
 
+    document.getElementById("app").style.display = "none";
     document.getElementById("product-page").style.display = "none";
     document.getElementById("cart-page").style.display = "none";
     document.getElementById("news-page").style.display = "none";
@@ -311,8 +312,7 @@ async function loadProducts() {
 
         `;
 
-});
+    });
 
 }
 
-};
