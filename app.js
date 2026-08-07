@@ -154,6 +154,7 @@ async function loadProducts() {
     const catalogo = document.getElementById("catalogo");
 
     if (!catalogo) {
+        console.error("No existe #catalogo");
         return;
     }
 
@@ -167,78 +168,58 @@ async function loadProducts() {
 
         const productos = await respuesta.json();
 
+        console.log("PRODUCTOS:", productos);
+
         catalogo.innerHTML = "";
-
-        if (!Array.isArray(productos) || productos.length === 0) {
-
-            catalogo.innerHTML = `
-                <div class="plan-card">
-                    <h2>No hay productos</h2>
-                    <p>No se encontraron productos en la base de datos.</p>
-                </div>
-            `;
-
-            return;
-        }
 
         productos.forEach(producto => {
 
-            const nombre = producto.nombre || "";
+            let imagen = producto.imagen || "";
 
-            const grupo = nombre === "MAYORES"
-                ? "adultos"
-                : nombre.toLowerCase();
+            if (imagen.startsWith("http")) {
+                // URL completa
+            } else {
+                imagen = "images/" + imagen;
+            }
 
-            const imagenGuardada =
-                localStorage.getItem("img-" + grupo);
+            const tarjeta = document.createElement("div");
 
-            const imagen = imagenGuardada
-                ? imagenGuardada
-                : "images/" + (
-                    producto.imagen || (grupo + ".jpg")
-                  );
+            tarjeta.className = "card-netflix";
 
-            catalogo.innerHTML += `
+            tarjeta.style.backgroundImage =
+                "url('" + imagen + "')";
 
-                <div
-                    class="card-netflix"
-                    style="
-                        background-image:url('${imagen}');
-                        background-size:cover;
-                        background-position:center;
-                    "
-                    onclick="openProduct('${nombre}')"
-                >
+            tarjeta.style.backgroundSize = "cover";
+            tarjeta.style.backgroundPosition = "center";
+            tarjeta.style.minHeight = "220px";
 
-                    <div class="card-overlay">
-
-                        <h2>${nombre}</h2>
-
-                        <span>
-                            Desde ${producto.precio_30} USD
-                        </span>
-
-                    </div>
-
+            tarjeta.innerHTML = `
+                <div class="card-overlay">
+                    <h2>${producto.nombre}</h2>
+                    <span>Desde ${producto.precio_30} USD</span>
                 </div>
-
             `;
+
+            tarjeta.onclick = function() {
+                openProduct(producto.nombre);
+            };
+
+            catalogo.appendChild(tarjeta);
+
         });
 
     } catch (error) {
 
-        console.error("Error cargando productos:", error);
+        console.error("ERROR PRODUCTOS:", error);
 
         catalogo.innerHTML = `
             <div class="plan-card">
-                <h2>⚠️ Error</h2>
-                <p>No se pudieron cargar los productos.</p>
-                <small>${error.message}</small>
+                <h2>⚠️ Error cargando productos</h2>
+                <p>${error.message}</p>
             </div>
         `;
     }
 }
-
 
 /* =========================
    PRODUCTO
