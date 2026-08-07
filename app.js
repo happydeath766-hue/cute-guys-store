@@ -1,3 +1,4 @@
+alert("APP.JS SI ESTA EJECUTANDO");
 window.onload = () => {
 
     const tg = window.Telegram?.WebApp;
