@@ -50,7 +50,7 @@ if (adminButton) {
 
 function openProduct(product) {
 
-    document.getElementById("app").style.display = "none";
+    // document.getElementById("app").style.display = "none";
 
     document.getElementById("product-page").style.display = "block";
 
@@ -283,49 +283,23 @@ async function loadProducts() {
     productos.forEach((producto) => {
 
         catalogo.innerHTML += `
-            <div class="card-netflix"
-                 onclick="openProduct('${producto.nombre}')">
+    <div class="card-netflix"
+         style="background-image: url('images/${producto.nombre.toLowerCase()}.jpg');"
+         onclick="openProduct('${producto.nombre}')">
 
-                <div class="card-overlay">
+        <div class="card-overlay">
 
-                    <h2>${producto.nombre}</h2>
+            <h2>${producto.nombre}</h2>
 
-                    <span>Desde ${producto.precio_30} USD</span>
+            <span>Desde ${producto.precio_30} USD</span>
 
-                </div>
+        </div>
 
-            </div>
+    </div>
+
         `;
 
     });
 
 }
 
-async function loadProducts() {
-
-    const respuesta = await fetch("/api/productos");
-
-    const productos = await respuesta.json();
-
-    const catalogo = document.getElementById("catalogo");
-
-    if (!catalogo) return;
-
-    catalogo.innerHTML = "";
-
-    productos.forEach((producto) => {
-
-        catalogo.innerHTML += `
-            <div class="card-netflix"
-                 onclick="openProduct('${producto.nombre}')">
-
-                <h2>${producto.nombre}</h2>
-
-                <p>Desde ${producto.precio_30} USD</p>
-
-            </div>
-        `;
-
-    });
-
-}

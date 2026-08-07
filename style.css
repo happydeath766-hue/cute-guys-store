@@ -205,20 +205,37 @@ body {
 }
 
 .card-netflix {
-    background: #181818;
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 18px;
-    min-height: 140px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    min-height: 220px;
+    overflow: hidden;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.card-netflix:active {
-    transform: scale(0.96);
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 15px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.2)
+    );
 }
 
 .card-netflix h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card-netflix span {
+    color: white;
+    font-size: 14px;
 }
