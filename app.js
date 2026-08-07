@@ -1,4 +1,3 @@
-alert("APP.JS SI ESTA EJECUTANDO");
 window.onload = () => {
 
     const tg = window.Telegram?.WebApp;
@@ -167,6 +166,7 @@ async function loadProducts() {
         }
 
         const productos = await respuesta.json();
+        alert("PRODUCTOS RECIBIDOS: " + JSON.stringify(productos));
 
         catalogo.innerHTML = "";
 
@@ -280,6 +280,7 @@ async function openProduct(product) {
         const respuesta = await fetch("/api/productos");
 
         const productos = await respuesta.json();
+        alert("PRODUCTOS RECIBIDOS: " + JSON.stringify(productos));
 
         const encontrado = productos.find(
             p => p.nombre === product
