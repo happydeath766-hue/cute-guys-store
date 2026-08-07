@@ -1,5 +1,16 @@
 window.onload = () => {
 
+window.onerror = function (mensaje, archivo, linea) {
+    alert(
+        "ERROR:\n" +
+        mensaje +
+        "\nArchivo: " +
+        archivo +
+        "\nLínea: " +
+        linea
+    );
+};
+
     const tg = window.Telegram.WebApp;
 
     tg.ready();
